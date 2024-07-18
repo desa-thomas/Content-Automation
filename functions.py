@@ -18,5 +18,4 @@ def retrieve_video(url):
         f.write(r.content)
         return f
     
-    #comment
 
