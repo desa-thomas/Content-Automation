@@ -45,7 +45,7 @@ print(src)
 driver.get(src)
 time.sleep(3)
 
-#TO DO: got the videos src link, now need to download it from the driver since "requests" library is getting 403
+#Copy the selenium sessions cookies to a request session to download the mp4 file. 
 cookies = driver.get_cookies()
 session = requests.Session()
 for cookie in cookies: 
@@ -56,5 +56,11 @@ with open("video good.mp4", "wb") as f:
     f.write(file_bytes)
     print("saved video")
 
-
 driver.quit()
+
+"""
+TODO: 
+    1. clean up the script, and possibly split up all tasks into functions and have the script just call a main funciton. 
+    2. create a dependencies.txt file, and put all the dependencies of the project into it. 
+    3. create the LinkedIn posting aspect of the script. 
+"""
