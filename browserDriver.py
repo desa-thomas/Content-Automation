@@ -5,25 +5,6 @@ from functions import *
 
 import time
 
-#TO DO
-"""
-    Grabbing content from tiktok
-
-    1. Make Tik tok account with the express purpose of generating the kind of content we care about/want to repost
-
-    2. Grab first video's (found on fyp) src link
-
-    3. Download video
-
-    -- Post content steps --
-
-    4. delete video
-
-    5. Repeat steps x amount per day
-
-"""
-
-
 """
     Checks if the video found on the page is the tik tok loading video, if so it returns false, otherwise true. 
     This function is passed into "wait.until()", the until function calls this on a loop until the function returns true, 
@@ -40,6 +21,8 @@ def checkSrc(driver):
     print("waiting...")
     return src != "https://sf16-website-login.neutral.ttwstatic.com/obj/tiktok_web_login_static/tiktok/webapp/main/webapp-desktop/playback1.mp4"
 
+#Script starts ---------------------------------------------------------------------------------------------
+
 #create webdriver
 driver = webdriver.Chrome()
 driver.implicitly_wait(40)
@@ -54,10 +37,12 @@ try:
 except TimeoutError: 
     print("timed out")
 
-#download video
+
 src = driver.find_element(By.TAG_NAME, "video").get_property("src")
 print(src)
 driver.get(src)
+
+#TO DO: got the videos src link, now need to download it from the driver since "requests" library is getting 403
 
 time.sleep(10)
 

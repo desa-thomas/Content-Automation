@@ -14,6 +14,7 @@ def retrieve_video(url):
     headers = {'user-agent': 'Mozilla/5.0'}
 
     r = requests.get(url, headers=headers)
+    print(r.status_code)
     with open(filename,'wb') as f: 
         print(r.content)
         f.write(r.content)
