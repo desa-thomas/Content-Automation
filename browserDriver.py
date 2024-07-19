@@ -1,9 +1,12 @@
-from seleniumwire import webdriver
+from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.wait import WebDriverWait
-from functions import *
+import requests
 
-import time
+import keyboard, time
+
+directory = "C:/Users/desa2/Desktop/ProjectsDigital Marketing Script"
 
 """
     Checks if the video found on the page is the tik tok loading video, if so it returns false, otherwise true. 
@@ -25,7 +28,6 @@ def checkSrc(driver):
 
 #create webdriver
 driver = webdriver.Chrome()
-driver.implicitly_wait(40)
 
 driver.get("https://www.tiktok.com/en")
 
@@ -41,9 +43,18 @@ except TimeoutError:
 src = driver.find_element(By.TAG_NAME, "video").get_property("src")
 print(src)
 driver.get(src)
+time.sleep(3)
 
 #TO DO: got the videos src link, now need to download it from the driver since "requests" library is getting 403
+cookies = driver.get_cookies()
+session = requests.Session()
+for cookie in cookies: 
+    session.cookies.set(cookie['name'], cookie['value'])
 
-time.sleep(10)
+file_bytes = session.get(src).content
+with open("video good.mp4", "wb") as f:
+    f.write(file_bytes)
+    print("saved video")
+
 
 driver.quit()
