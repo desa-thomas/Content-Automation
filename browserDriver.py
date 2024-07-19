@@ -41,9 +41,6 @@ except TimeoutError:
 
 
 src = driver.find_element(By.TAG_NAME, "video").get_property("src")
-print(src)
-driver.get(src)
-time.sleep(3)
 
 #Copy the selenium sessions cookies to a request session to download the mp4 file. 
 cookies = driver.get_cookies()
@@ -52,7 +49,7 @@ for cookie in cookies:
     session.cookies.set(cookie['name'], cookie['value'])
 
 file_bytes = session.get(src).content
-with open("video good.mp4", "wb") as f:
+with open("video.mp4", "wb") as f:
     f.write(file_bytes)
     print("saved video")
 
