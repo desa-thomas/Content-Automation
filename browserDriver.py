@@ -4,8 +4,6 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.wait import WebDriverWait
 import requests
 
-import keyboard, time
-
 directory = "C:/Users/desa2/Desktop/ProjectsDigital Marketing Script"
 
 """
