@@ -20,12 +20,17 @@ directory = "C:/Users/desa2/Desktop/ProjectsDigital Marketing Script"
 def checkSrc(driver):
     src = driver.find_element(By.TAG_NAME, "video").get_property("src")
     print("waiting...")
+    
+    # Returns true when the video is not the loading animation
     return src != "https://sf16-website-login.neutral.ttwstatic.com/obj/tiktok_web_login_static/tiktok/webapp/main/webapp-desktop/playback1.mp4"
 
 #Script starts ---------------------------------------------------------------------------------------------
 
+chrome_options = Options()
+chrome_options.add_argument("--headless=new")
+
 #create webdriver
-driver = webdriver.Chrome()
+driver = webdriver.Chrome(options = chrome_options)
 
 driver.get("https://www.tiktok.com/en")
 
