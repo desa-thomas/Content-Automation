@@ -29,5 +29,3 @@ def create_container():
         print(r.content)
 
     return
-
-create_container()
