@@ -65,10 +65,11 @@ def scrape_video(driver: webdriver.Chrome):
 
 
 #---------------------------------------------------------------------------------------
+#script
 directory = pathlib.Path().absolute()
 
 chrome_options = Options()
-# chrome_options.add_argument("--headless=new")
+chrome_options.add_argument("--headless=new")
 chrome_options.add_argument(f"--user-data-dir={directory}\\userdata")
 
 #create webdriver
@@ -76,7 +77,6 @@ driver = webdriver.Chrome(options = chrome_options)
 
 scrape_video(driver)
 
-time.sleep(1000)
 driver.quit()
 
 """
